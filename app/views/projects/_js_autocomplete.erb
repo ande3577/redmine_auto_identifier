@@ -1,0 +1,25 @@
+<script type="text/javascript">
+
+document.observe("dom:loaded", function() {
+        $('project_name').observe('change', changeIdentifier);
+});
+
+function changeIdentifier()
+{
+        var newName = tidyIdentText($('project_name').value);
+	var parentProject = tidyIdentText(document.getElementById('project_parent_id').options[document.getElementById('project_parent_id').options.selectedIndex].text);
+
+        $('project_identifier').value = (parentProject != '' ? (parentProject + '-') : '') + newName;
+}
+
+function tidyIdentText(txt)
+{
+	txt = txt.trim();
+        txt = txt.replace(/[^A-Za-z0-9\-\_]/g, '-');
+        txt = txt.toLowerCase();
+        txt = txt.replace(/^[-]*/, '');
+        txt = txt.replace(/[-]*$/, '')
+
+	return txt;
+}
+</script>
