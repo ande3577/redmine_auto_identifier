@@ -7,7 +7,7 @@ document.observe("dom:loaded", function() {
 function changeIdentifier()
 {
         var newName = tidyIdentText($('project_name').value);
-	var parentProject = tidyIdentText(document.getElementById('project_parent_id').options[document.getElementById('project_parent_id').options.selectedIndex].text);
+	var parentProject = document.getElementById('project_parent_id') ? tidyIdentText(document.getElementById('project_parent_id').options[document.getElementById('project_parent_id').options.selectedIndex].text) : '';
 
         $('project_identifier').value = (parentProject != '' ? (parentProject + '-') : '') + newName;
 }
