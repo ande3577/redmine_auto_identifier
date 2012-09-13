@@ -1,15 +1,15 @@
 <script type="text/javascript">
 
-document.observe("dom:loaded", function() {
-        $('project_name').observe('change', changeIdentifier);
-});
+window.onload = function() {
+        document.getElementById('project_name').onchange = changeIdentifier;
+};
 
 function changeIdentifier()
 {
-        var newName = tidyIdentText($('project_name').value);
-	var parentProject = document.getElementById('project_parent_id') ? tidyIdentText(document.getElementById('project_parent_id').options[document.getElementById('project_parent_id').options.selectedIndex].text) : '';
+        var newName = tidyIdentText(document.getElementById('project_name').value);
+		var parentProject = document.getElementById('project_parent_id') ? tidyIdentText(document.getElementById('project_parent_id').options[document.getElementById('project_parent_id').options.selectedIndex].text) : '';
 
-        $('project_identifier').value = (parentProject != '' ? (parentProject + '-') : '') + newName;
+        document.getElementById('project_identifier').value = (parentProject != '' ? (parentProject + '-') : '') + newName;
 }
 
 function tidyIdentText(txt)
