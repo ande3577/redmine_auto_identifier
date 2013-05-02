@@ -2,3 +2,5 @@
 
 Automatically fills in the project identifier field with the safe project name.
 Will use the parent project as a prefix if it exists.
+
+Obsolete as Redmine 2.3 adds this feature.
